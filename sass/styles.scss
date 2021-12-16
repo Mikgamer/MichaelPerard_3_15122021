@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+// Variables
+
+$lightGray: #F6F6F6;
+$gray: #7E7E7E;
+$darkGray: #353535;
+$purple: #9356dc;
+$pink: #ff79da;
+
+// Styles basiques
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,h2,h3,p{
+    margin: 0;
+}
+
+h1,h2{
+    font-size: 25px;
+    font-weight: 900;
+}
+
+p{
+    font-size: 17px;
+    font-weight: 300;
+}
+
+// Composants
+
+.button{
+    display: block;
+    padding: 16px 22px;
+    background: linear-gradient(350deg, $purple 0%, $pink 100%);
+    border-radius: 1000px; // Bordure énorme pour garantir l'effet bouton pile
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 3px 5px rgb(0 0 0/.2);
+}
+
+.textCard{
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 10px 8px 2px rgb(0 0 0/.05),
+                0 0 16px rgb(0 0 0/.1);
+    
+    &__title{
+        padding: 0 0 8px;
+    }
+
+}
+
+// Blocs
+
+.header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    box-shadow: 0 0 10px rgb(0 0 0/.5);
+
+    &__logo{
+        height: 32px;
+    }
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: #EAEAEA;
+    color: $darkGray;
+
+    &__text{
+        position: relative;
+        padding: 0 20px;
+        font-weight: 500;
+
+        i{
+            position: absolute;
+            right: 100%;
+        }
+    }
+}
+
+.reservation{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 0;
+    background: $lightGray;
+    text-align: center;
+
+    &__subtitle{
+        margin: 16px 0;
+    }
+
+    &__button{
+        @extend .button;
+        margin: 8px auto;
+    }
+}
+
+.howItWorks{
+    padding: 50px 20px;
+
+    &__title{
+        margin: 0 0 32px;
+    }
+
+    &__textCard{
+        @extend .textCard;
+        position: relative;
+        margin: 0 0 20px 10px;
+        padding: 32px;
+        background: $lightGray;
+        font-weight: 500;     
+
+        &:hover{
+            background: #F5EDFF;
+
+            i{
+                color: $purple;
+            }
+        }
+
+        &::before{
+            position: absolute;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            transform: translateX(-50%);
+            padding: 4px;
+            border-radius: 50%;
+            background: $purple;
+            color: white;
+            text-align: center;
+        }
+
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i})::before { content: "#{$i}"; }
+        }
+
+        i{
+            color: $gray;
+            padding: 0 20px 0 0;
+        }
+    }
+}
+
+// .\dart-sass\sass sass\styles.scss css\styles.css --watch
