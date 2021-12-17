@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
 // Variables
 
 $lightGray: #F6F6F6;
 $gray: #7E7E7E;
 $darkGray: #353535;
+$lightPurple: #F5EDFF;
 $purple: #9356dc;
 $pink: #ff79da;
 
@@ -68,6 +70,36 @@ p{
     }
 }
 
+.footer{
+    padding: 30px 25px;
+    background: $darkGray;
+    color: white;
+
+    &__title{
+        font-family: 'Shrikhand', cursive;
+        font-weight: 100;
+        margin: 0 0 20px;
+    }
+
+    &__link{
+        display: block;
+        margin: 0 0 12px;
+        text-decoration: none;
+        color: white;
+
+        &:hover{
+            color: $lightPurple;
+        }
+
+        i{
+            width: 12px;
+            padding: 0 10px 0 0;
+            text-align: center;
+            font-size: 12px;
+        }
+    }
+}
+
 .location{
     display: flex;
     align-items: center;
@@ -107,7 +139,7 @@ p{
 }
 
 .howItWorks{
-    padding: 50px 20px;
+    padding: 50px 25px;
 
     &__title{
         margin: 0 0 32px;
@@ -121,8 +153,13 @@ p{
         background: $lightGray;
         font-weight: 500;     
 
+        i{
+            color: $gray;
+            padding: 0 20px 0 0;
+        }
+
         &:hover{
-            background: #F5EDFF;
+            background: $lightPurple;
 
             i{
                 color: $purple;
@@ -145,12 +182,92 @@ p{
         @for $i from 1 through 3 {
             &:nth-of-type(#{$i})::before { content: "#{$i}"; }
         }
+    }
+}
 
-        i{
-            color: $gray;
-            padding: 0 20px 0 0;
+.restaurantMenu{
+    padding: 60px 25px;
+    background: $lightGray;
+
+    &__title{
+        margin: 0 0 32px;
+    }
+    
+    &__grid{
+        display: grid;
+        grid-auto-rows: 280px;
+    }
+}
+
+.menuCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0 0 25px 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 8px 2px rgb(0 0 0/.05),
+                0 0 16px rgb(0 0 0/.1);
+    overflow: hidden;
+
+    &__img{
+        position: relative;
+        height: 100%;
+        img{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
         }
     }
+
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        padding: 16px;
+    }
+
+    &__title{
+        margin: 0 0 4px;
+    }
+
+    &__like{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 8px;
+        border: none;
+        background: none;
+        font-size: 24px;
+
+        i:nth-child(1){
+            position: absolute;
+            font-weight: bold;
+            display: none;
+            background: linear-gradient(0deg, $pink 0%, $purple 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &:hover,&:focus{
+            i:nth-child(1){
+                display: block;
+                animation: .3s like;
+                animation-fill-mode: forwards;
+            }
+        }
+
+        i:nth-child(2){
+            position: relative;
+        }
+    }
+}
+
+@keyframes like {
+    0% { clip-path: inset(100% 0 0 0); }
+    100% { clip-path: inset(0); }
 }
 
 // .\dart-sass\sass sass\styles.scss css\styles.css --watch
