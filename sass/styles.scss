@@ -2,16 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
 // Variables
-
 $lightGray: #F6F6F6;
 $gray: #7E7E7E;
 $darkGray: #353535;
 $lightPurple: #F5EDFF;
 $purple: #9356dc;
 $pink: #ff79da;
+$mint: #99E2D0;
 
 // Styles basiques
-
 body{
     font-family: 'Roboto', sans-serif;
 }
@@ -30,10 +29,10 @@ p{
     font-weight: 300;
 }
 
-// Composants
-
+// Elements
 .button{
     display: block;
+    width: max-content;
     padding: 16px 22px;
     background: linear-gradient(350deg, $purple 0%, $pink 100%);
     border-radius: 1000px; // Bordure énorme pour garantir l'effet bouton pile
@@ -41,6 +40,39 @@ p{
     font-weight: 500;
     text-decoration: none;
     box-shadow: 0 3px 5px rgb(0 0 0/.2);
+}
+
+.like{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+
+    i:nth-child(1){
+        position: absolute;
+        font-weight: bold;
+        display: none;
+        background: linear-gradient(0deg, $pink 0%, $purple 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &:hover,&:focus{
+        i:nth-child(1){
+            display: block;
+            animation: .3s like;
+        }
+    }
+
+    i:nth-child(2){
+        position: relative;
+    }
 }
 
 .textCard{
@@ -56,7 +88,6 @@ p{
 }
 
 // Blocs
-
 .header{
     position: relative;
     display: flex;
@@ -64,6 +95,17 @@ p{
     justify-content: center;
     height: 64px;
     box-shadow: 0 0 10px rgb(0 0 0/.5);
+
+    &__back{
+        position: absolute;
+        left: 25px;
+        height: 32px;
+        width: 32px;
+        color: $darkGray;
+        line-height: 32px;
+        text-align: center;
+        font-size: 22px;
+    }
 
     &__logo{
         height: 32px;
@@ -100,6 +142,7 @@ p{
     }
 }
 
+// Accueil
 .location{
     display: flex;
     align-items: center;
@@ -151,7 +194,7 @@ p{
         margin: 0 0 20px 10px;
         padding: 32px;
         background: $lightGray;
-        font-weight: 500;     
+        font-weight: 500; 
 
         i{
             color: $gray;
@@ -210,6 +253,21 @@ p{
                 0 0 16px rgb(0 0 0/.1);
     overflow: hidden;
 
+    &:nth-of-type(2) &__img img{
+        object-position: 0 60%;
+    }
+    
+    &:nth-of-type(3) &__img img,
+    &:nth-of-type(4) &__img img{
+        object-position: 0 100%;
+    }
+
+    a{
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
     &__img{
         position: relative;
         height: 100%;
@@ -222,8 +280,10 @@ p{
     }
 
     &__body{
-        display: flex;
-        justify-content: space-between;
+        position: relative;
+    }
+
+    &__content{
         padding: 16px;
     }
 
@@ -231,43 +291,148 @@ p{
         margin: 0 0 4px;
     }
 
-    &__like{
-        position: relative;
+    .like{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 16px;
+    }
+}
+
+// Menus
+.menuImg{
+    width: 100%;
+    height: 300px;
+    margin: 0 0 -55px;
+    object-fit: cover;
+}
+
+.menuContainer{
+    position: relative;
+    padding: 30px 14px;
+    background: $lightGray;
+    border-radius: 40px 40px 0 0;
+
+    &__title{
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 4px 8px;
-        border: none;
-        background: none;
-        font-size: 24px;
+        justify-content: space-between;
+        margin: 0 8px;
 
-        i:nth-child(1){
-            position: absolute;
-            font-weight: bold;
-            display: none;
-            background: linear-gradient(0deg, $pink 0%, $purple 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        h1{
+            font-family: 'Shrikhand', cursive;
+            font-weight: 100;
         }
+    }
 
-        &:hover,&:focus{
-            i:nth-child(1){
-                display: block;
-                animation: .3s like;
+    &__button{
+        @extend .button;
+        margin: 50px auto;
+        padding: 16px 50px;
+    }
+}
+
+.dishes{
+    margin: 30px 0 0;
+
+    &__title{
+        position: relative;
+        margin: 0 8px 30px;
+        font-size: 20px;
+        font-weight: 300;
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            display: block;
+            background: $mint;
+            width: 50px;
+            height: 4px;  
+        }
+    }
+
+    &__textCard{
+        @extend .textCard;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0 0 20px;
+        overflow: hidden;
+        opacity: 0;
+
+        @for $i from 1 through 10 {
+            &:nth-of-type(#{$i}) {
+                animation: 1s fadeIn 0.5 + $i * 0.2s;
                 animation-fill-mode: forwards;
             }
         }
 
-        i:nth-child(2){
-            position: relative;
+        &__title{
+            margin: 0 0 4px;
+        }
+
+        &__text{
+            padding: 16px 0 16px 16px;
+            white-space: nowrap;
+            overflow: hidden;
+
+            *{
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        &__price{
+            margin: auto 0 0 auto;
+            padding: 16px;
+        }
+
+        &__addToCard{
+            transition: .5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 -80px 0 0;
+            min-width: 80px;
+            background: $mint;
+            font-size: 32px;
+
+            i{
+                transition: .5s;
+                transform: rotate(0);
+                color: white;
+            }
+        }
+
+        &:hover &__addToCard,&:focus &__addToCard{
+            margin: 0;
+
+            i{
+                transform: rotate(360deg);
+            }
         }
     }
 }
 
+// Animations
 @keyframes like {
-    0% { clip-path: inset(100% 0 0 0); }
-    100% { clip-path: inset(0); }
+    0%{
+        clip-path: inset(100% 0 0 0);
+    }
+    100%{
+        clip-path: inset(0);
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 // .\dart-sass\sass sass\styles.scss css\styles.css --watch

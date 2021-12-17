@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+h1, h2 {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+p {
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.button, .menuContainer__button, .reservation__button {
+  display: block;
+  width: max-content;
+  padding: 16px 22px;
+  background: linear-gradient(350deg, #9356dc 0%, #ff79da 100%);
+  border-radius: 1000px;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.like {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.like i:nth-child(1) {
+  position: absolute;
+  font-weight: bold;
+  display: none;
+  background: linear-gradient(0deg, #ff79da 0%, #9356dc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.like:hover i:nth-child(1), .like:focus i:nth-child(1) {
+  display: block;
+  animation: 0.3s like;
+}
+.like i:nth-child(2) {
+  position: relative;
+}
+
+.textCard, .dishes__textCard, .howItWorks__textCard {
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 8px 2px rgba(0, 0, 0, 0.05), 0 0 16px rgba(0, 0, 0, 0.1);
+}
+.textCard__title {
+  padding: 0 0 8px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.header__back {
+  position: absolute;
+  left: 25px;
+  height: 32px;
+  width: 32px;
+  color: #353535;
+  line-height: 32px;
+  text-align: center;
+  font-size: 22px;
+}
+.header__logo {
+  height: 32px;
+}
+
+.footer {
+  padding: 30px 25px;
+  background: #353535;
+  color: white;
+}
+.footer__title {
+  font-family: "Shrikhand", cursive;
+  font-weight: 100;
+  margin: 0 0 20px;
+}
+.footer__link {
+  display: block;
+  margin: 0 0 12px;
+  text-decoration: none;
+  color: white;
+}
+.footer__link:hover {
+  color: #F5EDFF;
+}
+.footer__link i {
+  width: 12px;
+  padding: 0 10px 0 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background: #EAEAEA;
+  color: #353535;
+}
+.location__text {
+  position: relative;
+  padding: 0 20px;
+  font-weight: 500;
+}
+.location__text i {
+  position: absolute;
+  right: 100%;
+}
+
+.reservation {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 0;
+  background: #F6F6F6;
+  text-align: center;
+}
+.reservation__subtitle {
+  margin: 16px 0;
+}
+.reservation__button {
+  margin: 8px auto;
+}
+
+.howItWorks {
+  padding: 50px 25px;
+}
+.howItWorks__title {
+  margin: 0 0 32px;
+}
+.howItWorks__textCard {
+  position: relative;
+  margin: 0 0 20px 10px;
+  padding: 32px;
+  background: #F6F6F6;
+  font-weight: 500;
+}
+.howItWorks__textCard i {
+  color: #7E7E7E;
+  padding: 0 20px 0 0;
+}
+.howItWorks__textCard:hover {
+  background: #F5EDFF;
+}
+.howItWorks__textCard:hover i {
+  color: #9356dc;
+}
+.howItWorks__textCard::before {
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  padding: 4px;
+  border-radius: 50%;
+  background: #9356dc;
+  color: white;
+  text-align: center;
+}
+.howItWorks__textCard:nth-of-type(1)::before {
+  content: "1";
+}
+.howItWorks__textCard:nth-of-type(2)::before {
+  content: "2";
+}
+.howItWorks__textCard:nth-of-type(3)::before {
+  content: "3";
+}
+
+.restaurantMenu {
+  padding: 60px 25px;
+  background: #F6F6F6;
+}
+.restaurantMenu__title {
+  margin: 0 0 32px;
+}
+.restaurantMenu__grid {
+  display: grid;
+  grid-auto-rows: 280px;
+}
+
+.menuCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0 0 25px 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 8px 2px rgba(0, 0, 0, 0.05), 0 0 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.menuCard:nth-of-type(2) .menuCard__img img {
+  object-position: 0 60%;
+}
+.menuCard:nth-of-type(3) .menuCard__img img, .menuCard:nth-of-type(4) .menuCard__img img {
+  object-position: 0 100%;
+}
+.menuCard a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.menuCard__img {
+  position: relative;
+  height: 100%;
+}
+.menuCard__img img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.menuCard__body {
+  position: relative;
+}
+.menuCard__content {
+  padding: 16px;
+}
+.menuCard__title {
+  margin: 0 0 4px;
+}
+.menuCard .like {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 16px;
+}
+
+.menuImg {
+  width: 100%;
+  height: 300px;
+  margin: 0 0 -55px;
+  object-fit: cover;
+}
+
+.menuContainer {
+  position: relative;
+  padding: 30px 14px;
+  background: #F6F6F6;
+  border-radius: 40px 40px 0 0;
+}
+.menuContainer__title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 8px;
+}
+.menuContainer__title h1 {
+  font-family: "Shrikhand", cursive;
+  font-weight: 100;
+}
+.menuContainer__button {
+  margin: 50px auto;
+  padding: 16px 50px;
+}
+
+.dishes {
+  margin: 30px 0 0;
+}
+.dishes__title {
+  position: relative;
+  margin: 0 8px 30px;
+  font-size: 20px;
+  font-weight: 300;
+}
+.dishes__title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  display: block;
+  background: #99E2D0;
+  width: 50px;
+  height: 4px;
+}
+.dishes__textCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0 0 20px;
+  overflow: hidden;
+  opacity: 0;
+}
+.dishes__textCard:nth-of-type(1) {
+  animation: 1s fadeIn 0.7s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(2) {
+  animation: 1s fadeIn 0.9s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(3) {
+  animation: 1s fadeIn 1.1s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(4) {
+  animation: 1s fadeIn 1.3s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(5) {
+  animation: 1s fadeIn 1.5s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(6) {
+  animation: 1s fadeIn 1.7s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(7) {
+  animation: 1s fadeIn 1.9s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(8) {
+  animation: 1s fadeIn 2.1s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(9) {
+  animation: 1s fadeIn 2.3s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard:nth-of-type(10) {
+  animation: 1s fadeIn 2.5s;
+  animation-fill-mode: forwards;
+}
+.dishes__textCard__title {
+  margin: 0 0 4px;
+}
+.dishes__textCard__text {
+  padding: 16px 0 16px 16px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.dishes__textCard__text * {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dishes__textCard__price {
+  margin: auto 0 0 auto;
+  padding: 16px;
+}
+.dishes__textCard__addToCard {
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 -80px 0 0;
+  min-width: 80px;
+  background: #99E2D0;
+  font-size: 32px;
+}
+.dishes__textCard__addToCard i {
+  transition: 0.5s;
+  transform: rotate(0);
+  color: white;
+}
+.dishes__textCard:hover .dishes__textCard__addToCard, .dishes__textCard:focus .dishes__textCard__addToCard {
+  margin: 0;
+}
+.dishes__textCard:hover .dishes__textCard__addToCard i, .dishes__textCard:focus .dishes__textCard__addToCard i {
+  transform: rotate(360deg);
+}
+
+@keyframes like {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
