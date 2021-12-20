@@ -279,7 +279,7 @@ p {
   grid-auto-rows: 280px;
 }
 
-.menuCard {
+.menuCard, .menuCard--new {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -288,14 +288,18 @@ p {
   border-radius: 16px;
   box-shadow: 0 10px 8px 2px rgba(0, 0, 0, 0.05), 0 0 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: 0.2s;
 }
-.menuCard:nth-of-type(2) .menuCard__img img {
+.menuCard:hover, .menuCard--new:hover {
+  box-shadow: 0 10px 8px 2px rgba(0, 0, 0, 0.2), 0 0 16px rgba(0, 0, 0, 0.3);
+}
+.menuCard:nth-of-type(2) .menuCard__img img, .menuCard--new:nth-of-type(2) .menuCard__img img {
   object-position: 0 60%;
 }
-.menuCard:nth-of-type(3) .menuCard__img img, .menuCard:nth-of-type(4) .menuCard__img img {
+.menuCard:nth-of-type(3) .menuCard__img img, .menuCard--new:nth-of-type(3) .menuCard__img img, .menuCard:nth-of-type(4) .menuCard__img img, .menuCard--new:nth-of-type(4) .menuCard__img img {
   object-position: 0 100%;
 }
-.menuCard a {
+.menuCard a, .menuCard--new a {
   display: block;
   text-decoration: none;
   color: inherit;
@@ -319,11 +323,25 @@ p {
 .menuCard__title {
   margin: 0 0 4px;
 }
-.menuCard .like {
+.menuCard .like, .menuCard--new .like {
   position: absolute;
   top: 0;
   right: 0;
   margin: 16px;
+}
+.menuCard--new {
+  position: relative;
+}
+.menuCard--new::after {
+  content: "Nouveau";
+  position: absolute;
+  pointer-events: none;
+  top: 16px;
+  right: 16px;
+  padding: 5px 10px;
+  background: #99E2D0;
+  color: #008766;
+  border-radius: 3px;
 }
 
 .menuImg {
@@ -458,6 +476,34 @@ p {
   transform: rotate(360deg);
 }
 
+@media (min-width: 768px) {
+  .reservation, .howItWorks, .restaurantMenu, .menuContainer, .footer {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .menuImg {
+    height: 500px;
+    margin: 0 0 -150px;
+  }
+
+  .menuContainer {
+    padding-top: 100px;
+    border-radius: 100px 100px 0 0;
+  }
+}
+@media (min-width: 992px) {
+  .restaurantMenu__grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 25px;
+  }
+}
+@media (min-width: 1400px) {
+  .reservation, .howItWorks, .restaurantMenu, .menuContainer, .footer {
+    padding-left: 400px;
+    padding-right: 400px;
+  }
+}
 @keyframes like {
   0% {
     clip-path: inset(100% 0 0 0);

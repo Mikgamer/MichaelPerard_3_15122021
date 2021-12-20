@@ -312,6 +312,12 @@ p{
     box-shadow: 0 10px 8px 2px rgb(0 0 0/.05),
                 0 0 16px rgb(0 0 0/.1);
     overflow: hidden;
+    transition: .2s;
+
+    &:hover{
+        box-shadow: 0 10px 8px 2px rgb(0 0 0/.2),
+        0 0 16px rgb(0 0 0/.3);
+    }
 
     &:nth-of-type(2) &__img img{
         object-position: 0 60%;
@@ -356,6 +362,23 @@ p{
         top: 0;
         right: 0;
         margin: 16px;
+    }
+
+    &--new{
+        @extend .menuCard;
+        position: relative;
+
+        &::after{
+            content: "Nouveau";
+            position: absolute;
+            pointer-events: none;
+            top: 16px;
+            right: 16px;
+            padding: 5px 10px;
+            background: $mint;
+            color: #008766;
+            border-radius: 3px;
+        }
     }
 }
 
@@ -472,6 +495,39 @@ p{
                 transform: rotate(360deg);
             }
         }
+    }
+}
+
+// Media queries
+
+@media(min-width:768px){
+    .reservation,.howItWorks,.restaurantMenu,.menuContainer,.footer{
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+
+    .menuImg{
+        height: 500px;
+        margin: 0 0 -150px;
+    }
+
+    .menuContainer{
+        padding-top: 100px;
+        border-radius: 100px 100px 0 0;
+    }
+}
+
+@media(min-width:992px){
+    .restaurantMenu__grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+    }
+}
+
+@media(min-width:1400px){
+    .reservation,.howItWorks,.restaurantMenu,.menuContainer,.footer{
+        padding-left: 400px;
+        padding-right: 400px;
     }
 }
 
