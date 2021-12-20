@@ -14,7 +14,7 @@ h1, h2 {
 }
 
 p {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 300;
 }
 
@@ -28,6 +28,10 @@ p {
   font-weight: 500;
   text-decoration: none;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+.button:hover, .menuContainer__button:hover, .reservation__button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4), 0 0 2px rgba(0, 0, 0, 0.4);
 }
 
 .like {
@@ -65,6 +69,76 @@ p {
 }
 .textCard__title {
   padding: 0 0 8px;
+}
+
+.loading {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: #9356dc;
+  animation: 0.5s fadeOut 3s forwards;
+}
+.loading__container {
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.loading__subtitle {
+  color: #99E2D0;
+}
+.loading__dot {
+  animation: 1s loadingDot linear infinite;
+}
+.loading__dot:nth-of-type(1) {
+  animation-delay: 0.2s;
+  width: 30px;
+  height: 30px;
+}
+.loading__dot:nth-of-type(2) {
+  animation-delay: 0.4s;
+  width: 50px;
+  height: 50px;
+}
+.loading__dot:nth-of-type(3) {
+  animation-delay: 0.6s;
+  width: 70px;
+  height: 70px;
+}
+.loading__spinner {
+  position: absolute;
+  border: solid 1px #99E2D0;
+  box-sizing: border-box;
+  animation: 2.5s spin ease infinite;
+}
+.loading__spinner:nth-of-type(1) {
+  animation-delay: 0.2s;
+  width: 30px;
+  height: 30px;
+}
+.loading__spinner:nth-of-type(2) {
+  animation-delay: 0.4s;
+  width: 50px;
+  height: 50px;
+}
+.loading__spinner:nth-of-type(3) {
+  animation-delay: 0.6s;
+  width: 70px;
+  height: 70px;
+}
+.loading__spinner:nth-of-type(4) {
+  animation-delay: 0.8s;
+  width: 90px;
+  height: 90px;
 }
 
 .header {
@@ -280,7 +354,7 @@ p {
 }
 
 .dishes {
-  margin: 30px 0 0;
+  margin: 40px 0 0;
 }
 .dishes__title {
   position: relative;
@@ -354,6 +428,7 @@ p {
   overflow: hidden;
 }
 .dishes__textCard__text * {
+  letter-spacing: -0.5px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -399,6 +474,34 @@ p {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+@keyframes loadingDot {
+  0%, 49% {
+    opacity: 0;
+  }
+  50%, 100% {
+    opacity: 1;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
   }
 }
 

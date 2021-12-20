@@ -25,7 +25,7 @@ h1,h2{
 }
 
 p{
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 300;
 }
 
@@ -40,6 +40,11 @@ p{
     font-weight: 500;
     text-decoration: none;
     box-shadow: 0 3px 5px rgb(0 0 0/.2);
+
+    &:hover{
+        filter: brightness(1.1);
+        box-shadow: 0 3px 5px rgb(0 0 0/.4), 0 0 2px rgb(0 0 0/.4);
+    }
 }
 
 .like{
@@ -85,6 +90,61 @@ p{
         padding: 0 0 8px;
     }
 
+}
+
+.loading{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: $purple;
+    animation: .5s fadeOut 3s forwards;
+
+    &__container{
+        height: 300px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__subtitle{
+        color: $mint;
+    }
+
+    &__dot{
+        animation: 1s loadingDot linear infinite;
+
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+                animation-delay: $i * .2s;
+                width:  10px + $i * 20px;
+                height: 10px + $i * 20px;
+            }
+        }
+    }
+
+    &__spinner{
+        position: absolute;
+        border: solid 1px $mint;
+        box-sizing: border-box;
+        animation: 2.5s spin ease infinite;
+
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+                animation-delay: $i * .2s;
+                width:  10px + $i * 20px;
+                height: 10px + $i * 20px;
+            }
+        }
+    }
 }
 
 // Blocs
@@ -256,7 +316,7 @@ p{
     &:nth-of-type(2) &__img img{
         object-position: 0 60%;
     }
-    
+
     &:nth-of-type(3) &__img img,
     &:nth-of-type(4) &__img img{
         object-position: 0 100%;
@@ -332,7 +392,7 @@ p{
 }
 
 .dishes{
-    margin: 30px 0 0;
+    margin: 40px 0 0;
 
     &__title{
         position: relative;
@@ -377,6 +437,7 @@ p{
             overflow: hidden;
 
             *{
+                letter-spacing: -0.5px;
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
@@ -435,4 +496,34 @@ p{
     }
 }
 
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes loadingDot {
+    0%,49%{
+        opacity: 0;
+    }
+    50%,100%{
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0) scale(1);
+    }
+    50%{
+        transform: rotate(180deg) scale(2);
+    }
+    100%{
+        transform: rotate(360deg) scale(1);
+    }
+}
 // .\dart-sass\sass sass\styles.scss css\styles.css --watch
