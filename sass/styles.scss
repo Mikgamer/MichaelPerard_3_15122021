@@ -304,9 +304,7 @@ p{
 }
 
 .menuCard{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    position: relative;
     margin: 0 0 25px 0;
     background: white;
     border-radius: 16px;
@@ -320,26 +318,22 @@ p{
         0 0 16px rgb(0 0 0/.3);
     }
 
-    &:nth-of-type(2) &__img img{
-        object-position: 0 60%;
-    }
-
-    &:nth-of-type(3) &__img img,
-    &:nth-of-type(4) &__img img{
-        object-position: 0 100%;
+    &:nth-of-type(2) img{
+        object-position: 0 40%;
     }
 
     a{
-        display: block;
         text-decoration: none;
         color: inherit;
     }
 
-    &__img{
+    &__content{
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         height: 100%;
         img{
-            position: absolute;
             height: 100%;
             width: 100%;
             object-fit: cover;
@@ -347,10 +341,6 @@ p{
     }
 
     &__body{
-        position: relative;
-    }
-
-    &__content{
         padding: 16px;
     }
 
@@ -360,9 +350,9 @@ p{
 
     .like{
         position: absolute;
-        top: 0;
         right: 0;
-        margin: 16px;
+        bottom: 0;
+        margin: 16px 16px 30px;
     }
 
     &--new{
@@ -477,10 +467,10 @@ p{
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 -80px 0 0;
-            min-width: 80px;
+            margin: 0 -65px 0 0;
+            min-width: 65px;
             background: $mint;
-            font-size: 32px;
+            font-size: 24px;
 
             i{
                 transition: .5s;
